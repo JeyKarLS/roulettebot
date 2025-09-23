@@ -6,6 +6,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 import sqlite3
 import random
+import os
 
 ADMINS = [858127740, 891023107]
 
@@ -26,7 +27,9 @@ PRIZES = [
 
 # PRIZES defined later after database setup
 
-API_TOKEN = '8121116145:AAF60KkrzrMCJGTf6_qcavRPj0dkF9IXES4'
+API_TOKEN = os.environ.get('API_TOKEN')
+if not API_TOKEN:
+    raise ValueError("API_TOKEN environment variable is required")
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
