@@ -3,3 +3,6 @@ builder = "NIXPACKS"
 
 [deploy]
 startCommand = "python main.py"
+
+[variables]
+API_TOKEN = ""
