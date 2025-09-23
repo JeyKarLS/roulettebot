@@ -1,8 +1,0 @@
-{
-  "name": "roulettebot",
-  "version": "1.0.0",
-  "description": "Telegram Roulette Bot",
-  "scripts": {
-    "build": "echo 'This is a Python project'"
-  }
-}
