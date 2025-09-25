@@ -574,11 +574,6 @@ async def process_give_spins(message: types.Message, state: FSMContext):
     except:
         await message.answer("❌ Неверный формат. Используйте: ID количество\n\nПример: 123456789 5")
     await state.clear()
-
-@dp.callback_query(F.data == "admin_manage_prizes")
-async def admin_manage_prizes(callback: types.CallbackQuery):
-    if callback.from_user.id not in ADMINS:
-        await callback.answer("❌ Доступ запрещен!")
 @dp.callback_query(F.data == "admin_broadcast")
 async def admin_broadcast(callback: types.CallbackQuery, state: FSMContext):
     if callback.from_user.id not in ADMINS:
