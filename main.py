@@ -7,6 +7,9 @@ from aiogram.fsm.context import FSMContext
 import sqlite3
 import random
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 ADMINS = [858127740, 891023107]
 
@@ -29,7 +32,9 @@ PRIZES = [
 
 API_TOKEN = os.environ.get('API_TOKEN')
 if not API_TOKEN:
-    raise ValueError("API_TOKEN environment variable is required")
+    print("API_TOKEN environment variable is required. Set it in .env file or environment variable.")
+    print("Current env:", os.environ.get('API_TOKEN'))
+    exit(1)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
