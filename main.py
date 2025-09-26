@@ -703,7 +703,7 @@ async def admin_prizes(callback: types.CallbackQuery):
     text = "🏆 **Последние выигрыши:**\n\n"
     if wins:
         for uid, uname, prize, created in wins:
-            display = f"@{uname}" if uname else f"`{uid}`"
+            display = f"@{uname} (`{uid}`)" if uname else f"`{uid}`"
             text += f"{display} — {prize} — {created}\n"
     else:
         text += "Пока пусто.\n"
