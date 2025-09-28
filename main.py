@@ -546,7 +546,7 @@ async def process_search_user(message: types.Message, state: FSMContext):
         keyboard = types.InlineKeyboardMarkup(inline_keyboard=[
             [types.InlineKeyboardButton(text="⬅️ Назад", callback_data="admin_panel")]
         ])
-        await message.answer(text, parse_mode="Markdown", reply_markup=keyboard)
+        await message.answer(text, reply_markup=keyboard)
     else:
         await message.answer("❌ Пользователь не найден.")
     await state.clear()
@@ -632,7 +632,7 @@ async def admin_prize_stats(callback: types.CallbackQuery):
     else:
         text += "Пока нет данных."
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="⬅️ Назад", callback_data="admin_panel")]])
-    await callback.message.answer(text, parse_mode="Markdown", reply_markup=keyboard)
+    await callback.message.answer(text, reply_markup=keyboard)
 
 @dp.callback_query(F.data == "admin_users")
 async def admin_users(callback: types.CallbackQuery):
@@ -655,7 +655,7 @@ async def admin_users(callback: types.CallbackQuery):
     if not rows:
         text += "Нет пользователей."
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="⬅️ Назад", callback_data="admin_panel")]])
-    await callback.message.answer(text, parse_mode="Markdown", reply_markup=keyboard)
+    await callback.message.answer(text, reply_markup=keyboard)
 
 @dp.callback_query(F.data == "admin_stats")
 async def admin_stats(callback: types.CallbackQuery):
@@ -668,7 +668,7 @@ async def admin_stats(callback: types.CallbackQuery):
     total_spins = cursor.fetchone()[0] or 0
     text = f"📊 **Статистика бота:**\n\n👥 Пользователей: {total_users}\n🎰 Всего вращений: {total_spins}"
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="⬅️ Назад", callback_data="admin_panel")]])
-    await callback.message.answer(text, parse_mode="Markdown", reply_markup=keyboard)
+    await callback.message.answer(text, reply_markup=keyboard)
 
 @dp.callback_query(F.data == "admin_top")
 async def admin_top(callback: types.CallbackQuery):
@@ -690,7 +690,7 @@ async def admin_top(callback: types.CallbackQuery):
         display = f"@{uname}" if uname else f"`{uid}`"
         text += f"{i}. {display} - {spins} вращений\n"
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="⬅️ Назад", callback_data="admin_panel")]])
-    await callback.message.answer(text, parse_mode="Markdown", reply_markup=keyboard)
+    await callback.message.answer(text, reply_markup=keyboard)
 
 @dp.callback_query(F.data == "admin_prizes")
 async def admin_prizes(callback: types.CallbackQuery):
@@ -722,7 +722,7 @@ async def admin_prizes(callback: types.CallbackQuery):
     else:
         text += "Пока нет запросов."
     keyboard = types.InlineKeyboardMarkup(inline_keyboard=[[types.InlineKeyboardButton(text="⬅️ Назад", callback_data="admin_panel")]])
-    await callback.message.answer(text, parse_mode="Markdown", reply_markup=keyboard)
+    await callback.message.answer(text, reply_markup=keyboard)
 
 @dp.message(PrizeStates.waiting_for_email)
 async def process_email(message: types.Message, state: FSMContext):
